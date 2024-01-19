@@ -68,7 +68,7 @@ export default async function Page({ params }: { params: { id: any } }) {
                 User 1: 5 stars - This movie was amazing!
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                User 2: 4 stars - Great movie, would recommend.
+                User 2: 4 stars - Great movie, would recommend..
               </p>
             </div>
           </div>
