@@ -38,8 +38,7 @@ export default async function Page({ params }: { params: { id: any } }) {
             <div className="space-y-4">
               <h2 className="text-2xl font-bold">Overview</h2>
               <p className="text-gray-500 dark:text-gray-400">
-                This is the plot of the movie. It's a thrilling tale of
-                adventure and mystery.
+                This is the plot of the movie.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
                 Release Date: January 1, 2024
@@ -66,10 +65,10 @@ export default async function Page({ params }: { params: { id: any } }) {
             <div className="space-y-4">
               <h2 className="text-2xl font-bold">Ratings & Reviews</h2>
               <p className="text-gray-500 dark:text-gray-400">
-                User 1: 5 stars - "This movie was amazing!"
+                User 1: 5 stars - This movie was amazing!
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                User 2: 4 stars - "Great movie, would recommend."
+                User 2: 4 stars - Great movie, would recommend.
               </p>
             </div>
           </div>
