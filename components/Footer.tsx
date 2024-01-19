@@ -43,10 +43,25 @@ export default function Footer() {
       <div className="relative">
         Thanks to{' '}
         <span>
-          <Link href={'www.vercel.com'}></Link>{' '}
+          <Link
+            href="https://vercel.com"
+            className="text-sm font-medium hover:text-red-500"
+          >
+            Vercel
+          </Link>{' '}
         </span>{' '}
-        and the
+        and the{' '}
+        <span>
+          <Link
+            href="https://www.themoviedb.org/"
+            className="text-sm font-medium hover:text-red-500"
+          >
+            Themoviedb.org
+          </Link>{' '}
+        </span>
+        for making this site possible
       </div>
+
       <Sheet>
         <SheetTrigger asChild>
           <Button
