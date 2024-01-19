@@ -12,7 +12,7 @@ export default function Footer() {
         href="#"
       >
         <FilmIcon className="h-6 w-6" />
-        <span className="ml-2 text-lg font-semibold">HarFlix</span>
+        <span className="ml-2 text-lg font-semibold">HariFlix</span>
       </Link>
       <nav className="hidden lg:flex gap-6">
         <Link
@@ -41,12 +41,11 @@ export default function Footer() {
         </Link>
       </nav>
       <div className="relative">
-        <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
-        <Input
-          className="pl-8 text-sm"
-          placeholder="Search..."
-          type="search"
-        />
+        Thanks to{' '}
+        <span>
+          <Link href={'www.vercel.com'}></Link>{' '}
+        </span>{' '}
+        and the
       </div>
       <Sheet>
         <SheetTrigger asChild>

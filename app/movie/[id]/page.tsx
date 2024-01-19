@@ -42,7 +42,7 @@ export default async function Page({ params }: { params: { id: any } }) {
                 <h1 className="text-3xl mb-2 font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                   {data?.title}
                 </h1>
-                <span>"{data?.tagline}" </span>
+                <span>&quot;{data?.tagline}&quot;</span>
               </div>
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold">Overview</h2>
