@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { SheetTrigger, SheetContent, Sheet } from '@/components/ui/sheet';
 import { JSX, SVGProps } from 'react';
 
-export default function Navbar() {
+export default function Footer() {
   return (
     <header className="flex items-center justify-between px-4 py-2 lg:px-6">
       <Link
@@ -12,12 +12,12 @@ export default function Navbar() {
         href="#"
       >
         <FilmIcon className="h-6 w-6" />
-        <span className="ml-2 text-lg font-semibold">MovieFlix</span>
+        <span className="ml-2 text-lg font-semibold">HarFlix</span>
       </Link>
       <nav className="hidden lg:flex gap-6">
         <Link
           className="text-sm font-medium hover:text-red-500"
-          href="/"
+          href="#"
         >
           Home
         </Link>
