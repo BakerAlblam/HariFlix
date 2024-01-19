@@ -41,11 +41,11 @@ export default async function Page() {
               src={`https://image.tmdb.org/t/p/original${m.poster_path}`}
               width={400}
             />
-            <div className="bg-gold p-4 dark:bg-gray-950">
-              <h3 className="font-semibold text-lg md:text-l">{m.title}</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                {m.release_date}
-              </p>
+            <div className="bg-amber-300 p-4">
+              <h3 className="font-semibold text-lg md:text-l text-white">
+                {m.title}
+              </h3>
+              <p className="text-sm">{m.release_date}</p>
             </div>
           </div>
         ))}

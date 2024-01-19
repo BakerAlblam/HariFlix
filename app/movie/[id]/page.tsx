@@ -12,7 +12,7 @@ export default async function Page({ params }: { params: { id: any } }) {
   console.log(fetchMovie.data);
   return (
     <div className="flex flex-col bg-[#0F1117]">
-      {/* <section className="w-full py-12 text-white">
+      <section className="w-full py-12 text-white">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
             <Image
@@ -74,7 +74,7 @@ export default async function Page({ params }: { params: { id: any } }) {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
     </div>
   );
 }
