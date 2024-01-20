@@ -6,7 +6,7 @@ import { JSX, SVGProps } from 'react';
 
 export default function Navbar() {
   return (
-    <header className="flex items-center justify-between px-4 py-2 lg:px-6">
+    <header className="flex items-center justify-between px-4 py-2 lg:px-6 sticky top-0 bg-white z-10">
       <Link
         className="flex items-center"
         href="#"
@@ -23,7 +23,7 @@ export default function Navbar() {
         </Link>
         <Link
           className="text-sm font-medium hover:text-red-500"
-          href="#"
+          href="/movies"
         >
           Movies
         </Link>

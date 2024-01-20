@@ -1,46 +1,43 @@
 import Link from 'next/link';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { SheetTrigger, SheetContent, Sheet } from '@/components/ui/sheet';
-import { JSX, SVGProps } from 'react';
 
 export default function Footer() {
   return (
-    <header className="flex items-center justify-between px-4 py-2 lg:px-6">
-      <Link
-        className="flex items-center"
-        href="#"
-      >
-        <FilmIcon className="h-6 w-6" />
-        <span className="ml-2 text-lg font-semibold">HariFlix</span>
-      </Link>
-      <nav className="hidden lg:flex gap-6">
-        <Link
-          className="text-sm font-medium hover:text-red-500"
-          href="#"
-        >
-          Home
-        </Link>
-        <Link
-          className="text-sm font-medium hover:text-red-500"
-          href="#"
-        >
-          Movies
-        </Link>
-        <Link
-          className="text-sm font-medium hover:text-red-500"
-          href="#"
-        >
-          Anime
-        </Link>
-        <Link
-          className="text-sm font-medium hover:text-red-500"
-          href="#"
-        >
-          Shows
-        </Link>
-      </nav>
-      <div className="relative">
+    <footer className="flex w-full flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-6 text-center md:justify-between ">
+      <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
+        <li>
+          <Link
+            href={''}
+            className="font-normal transition-colors hover:text-red-500 focus:text-blue-500"
+          >
+            About Us
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={''}
+            className="font-normal transition-colors hover:text-red-500 focus:text-blue-500"
+          >
+            License
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={''}
+            className="font-normal transition-colors hover:text-red-500 focus:text-blue-500"
+          >
+            Contribute
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={''}
+            className="font-normal transition-colors hover:text-red-500 focus:text-blue-500"
+          >
+            Contact Us
+          </Link>
+        </li>
+      </ul>
+      <div className="relative text-sm m-2">
         Thanks to{' '}
         <span>
           <Link
@@ -61,146 +58,6 @@ export default function Footer() {
         </span>
         for making this site possible
       </div>
-
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button
-            className="lg:hidden"
-            size="icon"
-            variant="outline"
-          >
-            <MenuIcon className="h-6 w-6" />
-            <span className="sr-only">Toggle navigation menu</span>
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="left">
-          <Link
-            className="flex items-center mb-4"
-            href="#"
-          >
-            <FilmIcon className="h-6 w-6" />
-            <span className="ml-2 text-lg font-semibold">HariFlix</span>
-          </Link>
-          <div className="grid gap-2 py-6">
-            <Link
-              className="flex w-full items-center py-2 text-lg font-semibold hover:text-red-500"
-              href="#"
-            >
-              Home
-            </Link>
-            <Link
-              className="flex w-full items-center py-2 text-lg font-semibold hover:text-red-500"
-              href="#"
-            >
-              Movies
-            </Link>
-            <Link
-              className="flex w-full items-center py-2 text-lg font-semibold hover:text-red-500"
-              href="#"
-            >
-              Anime
-            </Link>
-            <Link
-              className="flex w-full items-center py-2 text-lg font-semibold hover:text-red-500"
-              href="#"
-            >
-              Shows
-            </Link>
-          </div>
-        </SheetContent>
-      </Sheet>
-    </header>
-  );
-}
-
-function FilmIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect
-        width="18"
-        height="18"
-        x="3"
-        y="3"
-        rx="2"
-      />
-      <path d="M7 3v18" />
-      <path d="M3 7.5h4" />
-      <path d="M3 12h18" />
-      <path d="M3 16.5h4" />
-      <path d="M17 3v18" />
-      <path d="M17 7.5h4" />
-      <path d="M17 16.5h4" />
-    </svg>
-  );
-}
-
-function MenuIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <line
-        x1="4"
-        x2="20"
-        y1="12"
-        y2="12"
-      />
-      <line
-        x1="4"
-        x2="20"
-        y1="6"
-        y2="6"
-      />
-      <line
-        x1="4"
-        x2="20"
-        y1="18"
-        y2="18"
-      />
-    </svg>
-  );
-}
-
-function SearchIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle
-        cx="11"
-        cy="11"
-        r="8"
-      />
-      <path d="m21 21-4.3-4.3" />
-    </svg>
+    </footer>
   );
 }
