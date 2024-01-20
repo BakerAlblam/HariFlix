@@ -32,7 +32,7 @@ export default async function TrendingCarousel({
         opts={{
           align: 'start',
         }}
-        className="w-full max-w-screen"
+        className="w-full"
       >
         <CarouselContent>
           {trendingMovies?.map((m: Movie) => (
