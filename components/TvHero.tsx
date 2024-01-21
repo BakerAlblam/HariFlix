@@ -16,6 +16,7 @@ type TvHeroProps = {
     first_air_date?: string;
     last_air_date?: string | null;
     poster_path?: string;
+    original_language: string;
   };
 };
 
@@ -23,17 +24,20 @@ export default function TvHero({ data }: TvHeroProps) {
   return (
     <section className="w-full py-12">
       <div className="container px-4 md:px-6">
-        <div className="flex">
+        <div className="flex text-sm">
           {data?.genres?.map((g: Genre) => (
             <li
               key={g.id}
-              className="ml-1 list-none mb-2 text-sm p-2 bg-slate-800 rounded-lg"
+              className="ml-1 list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg"
             >
               {g.name}
             </li>
           ))}
-          <p className="ml-1 list-none mb-2 text-sm p-2 bg-slate-800 rounded-lg">
-            TV series{' '}
+          <p className="ml-1 list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg">
+            TV Series{' '}
+          </p>
+          <p className="ml-1 list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg">
+            Orig. language: {data?.original_language.toLocaleUpperCase()}
           </p>
         </div>
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">

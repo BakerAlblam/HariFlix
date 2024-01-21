@@ -23,7 +23,6 @@ export default async function Page({ params }: { params: { id: number } }) {
     }
 
     const data = response.data;
-    console.log(data);
 
     return (
       <div className="flex flex-col bg-[#0F1117] text-white">
@@ -38,23 +37,26 @@ export default async function Page({ params }: { params: { id: number } }) {
                 <p className="">
                   Number of episodes: {data?.number_of_episodes}
                 </p>
-                <p className="">Runtime: 120 minutes</p>
               </div>
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold">Cast</h2>
-                <Accordion
-                  type="single"
-                  collapsible
-                >
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>Is it accessible?</AccordionTrigger>
-                    <AccordionContent>
-                      Yes. It adheres to the WAI-ARIA design pattern.
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-
-                <p className="">Supporting Actor as Supporting Character</p>
+                {data?.seasons?.map((info: any) => (
+                  <Accordion
+                    type="single"
+                    collapsible
+                  >
+                    <AccordionItem value={info?.name}>
+                      <AccordionTrigger key={info?.id}>
+                        {info?.name}
+                      </AccordionTrigger>
+                      <AccordionContent className="space-y-2 text-sm">
+                        <li>Episeode count: {info?.episode_count} </li>
+                        <li>Air date: {info?.air_date} </li>
+                        <li>Rating: {info?.vote_average} </li>
+                        <li>Plot {info?.overview} </li>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
               </div>
             </div>
           </div>
@@ -63,11 +65,16 @@ export default async function Page({ params }: { params: { id: number } }) {
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold">Ratings & Reviews</h2>
-                <p className="">User 1: 5 stars - This movie was amazing!</p>
+                <h2 className="text-2xl font-bold">Production</h2>
                 <p className="">
-                  User 2: 4 stars - Great movie, would recommend..
+                  Country: {data?.production_countries?.[0]?.name}
                 </p>
+                <h2 className="text-1xl font-bold">Production companies</h2>
+                {data?.production_companies.map((comp: any) => (
+                  <div className="">
+                    <li key={comp?.id}> {comp?.name} </li>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -75,8 +82,6 @@ export default async function Page({ params }: { params: { id: number } }) {
       </div>
     );
   } catch (error) {
-    // Handle other errors (e.g., network issues)
-    console.error('Error fetching data:', error);
     return <NotFound />;
   }
 }
