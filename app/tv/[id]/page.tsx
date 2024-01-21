@@ -70,8 +70,11 @@ export default async function Page({ params }: { params: { id: number } }) {
                 </p>
                 <h2 className="text-1xl font-bold">Production companies</h2>
                 {data?.production_companies.map((comp: any) => (
-                  <div className="">
-                    <li key={comp?.id}> {comp?.name} </li>
+                  <div
+                    className=""
+                    key={comp?.id}
+                  >
+                    <li> {comp?.name} </li>
                   </div>
                 ))}
               </div>
