@@ -2,17 +2,10 @@ import axios from 'axios';
 import { options } from './layout';
 import Image from 'next/image';
 import Link from 'next/link';
-import TrendingCarousel from '@/components/TrendingCarousel';
-
-type movieTypes = {
-  id: string;
-  title: string;
-  release_date: number;
-  poster_path: any;
-  name: string;
-  media_type: string;
-  first_air_date: number;
-};
+import TrendingCarousel from '@/components/TrendingMovies';
+import TrendingTv from '@/components/TrendingTv';
+import TrendingAll from '@/components/TrendingAll';
+import TrendingPeople from '@/components/TrendingPeople';
 
 export default async function Page() {
   const movie = await axios.get(
@@ -21,13 +14,13 @@ export default async function Page() {
   );
   const trendingMovies = movie?.data?.results;
 
-  console.log(trendingMovies);
-
   return (
     <main className="sm:p-14 py-16 px-3 flex flex-col gap-2 bg-[#0F1117]">
-      <h1 className="text-3xl text-white font-bold">Trending</h1>
-
+      <h1 className="text-3xl text-white text-center font-bold">Trending</h1>
+      <TrendingAll />
       <TrendingCarousel trendingMovies={trendingMovies} />
+      <TrendingTv />
+      <TrendingPeople />
     </main>
   );
 }

@@ -32,7 +32,7 @@ export default async function Page() {
           >
             <Link
               className="absolute inset-0 z-10"
-              href={`/movie/${m.id}`}
+              href={`/movies/${m.id}`}
             >
               <span className="sr-only">View</span>
             </Link>

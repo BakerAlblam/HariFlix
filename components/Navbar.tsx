@@ -70,13 +70,13 @@ export default function Navbar() {
           <div className="grid gap-2 py-6">
             <Link
               className="flex w-full items-center py-2 text-lg font-semibold hover:text-red-500"
-              href="#"
+              href="/"
             >
               Home
             </Link>
             <Link
               className="flex w-full items-center py-2 text-lg font-semibold hover:text-red-500"
-              href="#"
+              href="movies"
             >
               Movies
             </Link>
@@ -88,7 +88,7 @@ export default function Navbar() {
             </Link>
             <Link
               className="flex w-full items-center py-2 text-lg font-semibold hover:text-red-500"
-              href="#"
+              href="tv"
             >
               Shows
             </Link>
