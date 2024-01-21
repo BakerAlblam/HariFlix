@@ -43,11 +43,10 @@ export default async function Page({ params }: { params: { id: number } }) {
                   <Accordion
                     type="single"
                     collapsible
+                    key={info?.id}
                   >
                     <AccordionItem value={info?.name}>
-                      <AccordionTrigger key={info?.id}>
-                        {info?.name}
-                      </AccordionTrigger>
+                      <AccordionTrigger>{info?.name}</AccordionTrigger>
                       <AccordionContent className="space-y-2 text-sm">
                         <li>Episeode count: {info?.episode_count} </li>
                         <li>Air date: {info?.air_date} </li>
