@@ -76,7 +76,7 @@ export default function Navbar() {
             </Link>
             <Link
               className="flex w-full items-center py-2 text-lg font-semibold hover:text-red-500"
-              href="movies"
+              href="/movies"
             >
               Movies
             </Link>
@@ -88,7 +88,7 @@ export default function Navbar() {
             </Link>
             <Link
               className="flex w-full items-center py-2 text-lg font-semibold hover:text-red-500"
-              href="tv"
+              href="/tv"
             >
               Shows
             </Link>

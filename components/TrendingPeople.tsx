@@ -19,6 +19,7 @@ type Tv = {
   name: string;
   media_type: string;
   first_air_date: number;
+  known_for_department: string;
 };
 
 export default async function TrendingPeople() {
@@ -26,12 +27,12 @@ export default async function TrendingPeople() {
     'https://api.themoviedb.org/3/trending/person/day?language=en-US',
     options
   );
-  const trendingTv = data?.data?.results;
-  console.log(trendingTv);
+  const TrendingPeople = data?.data?.results;
+  console.log(TrendingPeople);
 
   return (
     <div className="text-white my-10">
-      <h1 className="text-2xl text-white mb-2">People</h1>
+      <h1 className="text-2xl text-white mb-2 underline">People</h1>
       <Carousel
         opts={{
           align: 'start',
@@ -39,10 +40,10 @@ export default async function TrendingPeople() {
         className="w-full"
       >
         <CarouselContent>
-          {trendingTv?.map((m: Tv) => (
+          {TrendingPeople?.map((m: Tv) => (
             <CarouselItem
               key={m.id}
-              className="sm:basis-1/3 md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
+              className="sm:basis-1/3 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 2xl:basis-1/6"
             >
               <div className="p-1">
                 <Image
@@ -53,9 +54,22 @@ export default async function TrendingPeople() {
                   width={400}
                 />
               </div>
-              <Link href={`/tv/${m.name}`}>
-                <h2 className="text-xl"> {m.name} </h2>
-              </Link>
+              <div className="bg-gray-400 p-4 rounded-b-lg">
+                <Link
+                  href={`/${
+                    m.media_type === 'movie' ? 'movies' : m.media_type
+                  }/${m.id}`}
+                >
+                  <h3 className="font-semibold text-lg md:text-l text-white">
+                    {m.title || m.name}
+                  </h3>
+                  <div className="text-sm flex">
+                    <span className="">
+                      Known for: {m.known_for_department}{' '}
+                    </span>
+                  </div>
+                </Link>
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>

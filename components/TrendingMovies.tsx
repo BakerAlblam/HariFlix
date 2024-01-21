@@ -9,6 +9,8 @@ import {
 } from './ui/carousel';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
+import axios from 'axios';
+import { options } from '@/app/layout';
 
 type Movie = {
   id: string;
@@ -21,16 +23,16 @@ type Movie = {
   vote_average: number;
 };
 
-type TrendingCarouselProps = {
-  trendingMovies: Movie[];
-};
+export default async function TrendingMovies() {
+  const movie = await axios.get(
+    'https://api.themoviedb.org/3/trending/movie/day?language=en-US',
+    options
+  );
+  const trendingMovies = movie?.data?.results;
 
-export default async function TrendingMovies({
-  trendingMovies,
-}: TrendingCarouselProps) {
   return (
     <div className="text-white my-10">
-      <h1 className="text-2xl text-white mb-2">Movies</h1>
+      <h1 className="text-2xl text-white mb-2 underline">Movies</h1>
       <Carousel
         opts={{
           align: 'start',
@@ -41,7 +43,7 @@ export default async function TrendingMovies({
           {trendingMovies?.map((m: Movie) => (
             <CarouselItem
               key={m.id}
-              className="sm:basis-1/3 md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
+              className="sm:basis-1/3 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 2xl:basis-1/6"
             >
               <div className="p-1">
                 <Image

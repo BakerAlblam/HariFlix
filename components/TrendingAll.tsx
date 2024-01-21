@@ -28,12 +28,11 @@ export default async function TrendingAll() {
     'https://api.themoviedb.org/3/trending/all/day?language=en-US',
     options
   );
-  const trendingTv = data?.data?.results;
-  console.log(trendingTv);
+  const trendingAll = data?.data?.results;
 
   return (
     <div className="text-white my-10">
-      <h1 className="text-2xl text-white mb-2">Movies & TV</h1>
+      <h1 className="text-2xl text-white mb-2 underline">Movies & TV</h1>
       <Carousel
         opts={{
           align: 'start',
@@ -41,10 +40,10 @@ export default async function TrendingAll() {
         className="w-full"
       >
         <CarouselContent>
-          {trendingTv?.map((m: Tv) => (
+          {trendingAll?.map((m: Tv) => (
             <CarouselItem
               key={m.id}
-              className="sm:basis-1/3 md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
+              className="sm:basis-1/3 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 2xl:basis-1/6"
             >
               <div className="p-1">
                 <Image
