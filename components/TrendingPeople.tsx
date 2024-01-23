@@ -74,7 +74,7 @@ export default async function TrendingPeople() {
           ))}
         </CarouselContent>
         <CarouselPrevious />
-        <CarouselNext />
+        <CarouselNext className="hidden" />
       </Carousel>
     </div>
   );

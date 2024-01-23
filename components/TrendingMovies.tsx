@@ -80,7 +80,7 @@ export default async function TrendingMovies() {
           ))}
         </CarouselContent>
         <CarouselPrevious />
-        <CarouselNext />
+        <CarouselNext className="hidden" />
       </Carousel>
     </div>
   );

@@ -81,7 +81,7 @@ export default async function TrendingAll() {
           ))}
         </CarouselContent>
         <CarouselPrevious />
-        <CarouselNext />
+        <CarouselNext className="md:hidden lg:hidden xl:hidden sm:hidden" />
       </Carousel>
     </div>
   );

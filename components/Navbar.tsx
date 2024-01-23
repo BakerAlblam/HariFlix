@@ -9,7 +9,7 @@ export default function Navbar() {
     <header className="flex items-center justify-between px-4 py-2 lg:px-6 sticky top-0 bg-white z-10">
       <Link
         className="flex items-center"
-        href="#"
+        href="/"
       >
         <FilmIcon className="h-6 w-6" />
         <span className="ml-2 text-lg font-semibold">HariFlix</span>
