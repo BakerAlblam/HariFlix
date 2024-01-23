@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="flex w-full flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-6 text-center md:justify-between ">
-      <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
+    <footer className="flex w-full flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-6 text-center md:justify-between mx-auto">
+      <ul className="flex flex-wrap items-center gap-y-2 gap-x-6 mx-2">
         <li>
           <Link
             href={''}
@@ -37,7 +37,7 @@ export default function Footer() {
           </Link>
         </li>
       </ul>
-      <div className="relative text-sm m-2">
+      <div className="relative text-sm mx-2">
         Thanks to{' '}
         <span>
           <Link

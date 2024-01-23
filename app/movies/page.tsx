@@ -22,7 +22,7 @@ export default async function Page() {
 
   return (
     <main className="sm:p-12 py-16 px-3 flex flex-col gap-2 bg-[#0F1117]">
-      <h1 className="text-3xl text-white font-bold">Movies</h1>
+      <h1 className="text-3xl text-white font-bold">Popular Movies</h1>
 
       <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-3 p-4 md:p-6">
         {movie?.data?.results.map((m: movieTypes) => (

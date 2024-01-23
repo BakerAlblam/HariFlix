@@ -12,7 +12,7 @@ export default function Navbar() {
         href="/"
       >
         <FilmIcon className="h-6 w-6" />
-        <span className="ml-2 text-lg font-semibold">HariFlix</span>
+        <span className="ml-2 text-lg font-semibold">HariMDB</span>
       </Link>
       <nav className="hidden lg:flex gap-6">
         <Link

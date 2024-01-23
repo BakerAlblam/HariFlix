@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Card, CardContent } from './ui/card';
 import {
   Carousel,
   CarouselContent,
@@ -43,7 +42,7 @@ export default async function TrendingAll() {
           {trendingAll?.map((m: Tv) => (
             <CarouselItem
               key={m.id}
-              className="sm:basis-1/3 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 2xl:basis-1/6"
+              className="sm:basis-1/2 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 2xl:basis-1/8 basis-1/2"
             >
               <div className="p-1">
                 <Image
@@ -57,15 +56,21 @@ export default async function TrendingAll() {
 
               <div className="bg-gray-400 p-4 rounded-b-lg">
                 <div className="text-sm flex">
-                  <Star size={20} />
-                  <span className="ml-1"> {m.vote_average.toFixed(1)} </span>
+                  <Star
+                    size={20}
+                    color="gold"
+                  />
+                  <span className="ml-1 mb-0.5 text-rose-700">
+                    {' '}
+                    {m.vote_average.toFixed(1)}{' '}
+                  </span>
                 </div>
                 <Link
                   href={`/${
                     m.media_type === 'movie' ? 'movies' : m.media_type
                   }/${m.id}`}
                 >
-                  <h3 className="font-semibold text-lg md:text-l text-white">
+                  <h3 className="font-semibold text-lg md:text-l text-white truncate">
                     {m.title || m.name}
                   </h3>
                 </Link>
@@ -74,14 +79,17 @@ export default async function TrendingAll() {
                     {m.release_date?.slice(0, 4) ||
                       m.first_air_date?.slice(0, 4)}
                   </span>
-                  <span className="ml-auto">{m.media_type}</span>
+                  <span className="ml-auto">
+                    {m.media_type.charAt(0).toUpperCase() +
+                      m.media_type.slice(1)}
+                  </span>
                 </p>
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
         <CarouselPrevious />
-        <CarouselNext className="md:hidden lg:hidden xl:hidden sm:hidden" />
+        <CarouselNext className="hidden sm:inline-block" />
       </Carousel>
     </div>
   );
