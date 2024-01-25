@@ -1,7 +1,3 @@
-import axios from 'axios';
-import { options } from './layout';
-import Image from 'next/image';
-import Link from 'next/link';
 import TrendingCarousel from '@/components/TrendingMovies';
 import TrendingTv from '@/components/TrendingTv';
 import TrendingAll from '@/components/TrendingAll';

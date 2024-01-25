@@ -7,24 +7,16 @@ import { Suspense } from 'react';
 import NowPlaying from '@/components/NowPlaying';
 import PopularMovie from '@/components/PopularMovie';
 import TopRated from '@/components/TopRated';
+import Upcoming from '@/components/Upcoming';
+import type { Metadata } from 'next';
 
-type movieTypes = {
-  id: string;
-  title: string;
-  release_date: number;
-  poster_path: any;
-  name: string;
-  media_type: string;
-  first_air_date: number;
+export const metadata: Metadata = {
+  title: 'Movies',
+  description:
+    'Movies page where you can get info regarding upcoming, popular, top-rated and now playing movies',
 };
 
 export default async function Page() {
-  const movie = await axios.get(
-    'https://api.themoviedb.org/3/movie/popular',
-    options
-  );
-  //console.log(movie.data?.results);
-
   return (
     <Suspense fallback={<Loading />}>
       <main className="sm:p-14 py-16 px-3 flex flex-col gap-2 bg-[#0F1117]">
@@ -32,6 +24,7 @@ export default async function Page() {
         <NowPlaying />
         <PopularMovie />
         <TopRated />
+        <Upcoming />
       </main>
     </Suspense>
   );

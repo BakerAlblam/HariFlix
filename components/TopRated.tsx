@@ -1,6 +1,6 @@
 import { options } from '@/app/layout';
 import axios from 'axios';
-import { Star, Link } from 'lucide-react';
+import { Star } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
@@ -9,6 +9,7 @@ import {
   CarouselNext,
 } from './ui/carousel';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type Tv = {
   id: string;

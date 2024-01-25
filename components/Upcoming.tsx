@@ -10,29 +10,30 @@ import {
 } from './ui/carousel';
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 
-export default async function PopularMovie() {
+type Tv = {
+  id: string;
+  title: string;
+  release_date: string;
+  poster_path: any;
+  name: string;
+  media_type: string;
+  first_air_date: string;
+  vote_average: number;
+};
+
+export default async function Upcoming() {
   const data = await axios.get(
-    'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1',
+    'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1',
     options
   );
 
   const response = data?.data?.results;
 
-  type Tv = {
-    id: string;
-    title: string;
-    release_date: string;
-    poster_path: any;
-    name: string;
-    media_type: string;
-    first_air_date: string;
-    vote_average: number;
-  };
-
   return (
     <div className="text-white my-10">
-      <h1 className="text-2xl text-white mb-2 underline">Popular</h1>
+      <h1 className="text-2xl text-white mb-2 underline">Top Rated</h1>
       <Carousel
         opts={{
           align: 'start',
@@ -68,11 +69,14 @@ export default async function PopularMovie() {
                 </div>
                 <Link href={`/${'movies'}/${m.id}`}>
                   <h3 className="font-semibold text-lg md:text-l text-white truncate">
-                    {m.title}
+                    {m.title || m.name}
                   </h3>
                 </Link>
                 <p className="text-sm flex">
-                  <span>{m.release_date?.slice(0, 4)}</span>
+                  <span>
+                    {m.release_date?.slice(0, 4) ||
+                      m.first_air_date?.slice(0, 4)}
+                  </span>
                 </p>
               </div>
             </CarouselItem>
