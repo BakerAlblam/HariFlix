@@ -25,15 +25,21 @@ export default async function Page({ params }: { params: { id: any } }) {
       <div className="flex flex-col bg-[#0F1117] text-white">
         <section className="w-full py-12">
           <div className="container px-4 md:px-6">
-            <div className="flex">
+            <div className="flex text-sm">
               {data?.genres?.map((g: genre) => (
                 <li
                   key={g.id}
-                  className="ml-2 mb-2"
+                  className="ml-1 list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg"
                 >
                   {g.name}
                 </li>
               ))}
+              <p className="ml-1 list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg">
+                TV Series{' '}
+              </p>
+              <p className="ml-1 list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg">
+                Orig. language: {data?.original_language.toLocaleUpperCase()}
+              </p>
             </div>
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <Image

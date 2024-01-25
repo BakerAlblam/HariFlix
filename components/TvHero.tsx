@@ -36,23 +36,33 @@ export default function TvHero({ data }: TvHeroProps) {
           <p className="ml-1 list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg">
             TV Series{' '}
           </p>
-          <p className="ml-1 list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg">
-            Orig. language: {data?.original_language.toLocaleUpperCase()}
-          </p>
         </div>
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
           <Image
             alt={data?.name || ''}
-            className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full sm:h-full  lg:order-last lg:aspect-square"
-            height={'550'}
+            className="mx-auto aspect-video overflow-hidden rounded-xl object-cover   lg:order-last lg:aspect-square w-full h-full"
+            height={'1250'}
             src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
-            width={'550'}
+            width={'950'}
           />
           <div className="flex flex-col justify-center space-y-2">
             <div className="space-y-1">
               <div className="flex">
-                <Star size={'25'} />
-                <span className="ml-1 mb-2 text-lg">{data?.vote_average}</span>
+                <ul>
+                  <li className="flex">
+                    <Star size={'25'} />
+                    <span className="ml-1 mb-2 text-lg">
+                      {data?.vote_average}
+                    </span>
+                  </li>
+                  <li>
+                    {' '}
+                    <p className=" list-none mb-2 text-sm p-1.5 bg-slate-700 rounded-lg">
+                      Original language:{' '}
+                      {data?.original_language.toLocaleUpperCase()}
+                    </p>
+                  </li>
+                </ul>
               </div>
               <h1 className="text-5xl mb-2 font-bold tracking-tighter sm:text-4xl xl:text-6xl/none">
                 {data?.name}
@@ -65,10 +75,6 @@ export default function TvHero({ data }: TvHeroProps) {
             <div className="space-y-2">
               <h2 className="text-2xl font-bold">Overview</h2>
               <p className="">{data?.overview}</p>
-              <p className="">First air date: {data?.first_air_date} </p>
-              <p className="">
-                Last air date: {data?.last_air_date || 'not available'}
-              </p>
             </div>
           </div>
         </div>

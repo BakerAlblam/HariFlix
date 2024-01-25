@@ -37,6 +37,10 @@ export default async function Page({ params }: { params: { id: number } }) {
                 <p className="">
                   Number of episodes: {data?.number_of_episodes}
                 </p>
+                <p className="">First air date: {data?.first_air_date} </p>
+                <p className="">
+                  Last air date: {data?.last_air_date || 'not available'}
+                </p>
               </div>
               <div className="space-y-4">
                 {data?.seasons?.map((info: any) => (
