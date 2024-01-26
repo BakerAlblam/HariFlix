@@ -4,10 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Loading from '@/components/Loading';
 import { Suspense } from 'react';
-import NowPlaying from '@/components/NowPlaying';
-import PopularMovie from '@/components/PopularMovie';
-import TopRated from '@/components/TopRated';
-import Upcoming from '@/components/Upcoming';
+import NowPlaying from '@/components/movies/NowPlaying';
+import PopularMovie from '@/components/movies/PopularMovie';
+import TopRated from '@/components/movies/TopRated';
+import Upcoming from '@/components/movies/Upcoming';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

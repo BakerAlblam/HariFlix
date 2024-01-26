@@ -7,32 +7,32 @@ import {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from './ui/carousel';
+} from '../ui/carousel';
 import Image from 'next/image';
 import Link from 'next/link';
 
-type Tv = {
-  id: string;
-  title: string;
-  release_date: string;
-  poster_path: any;
-  name: string;
-  media_type: string;
-  first_air_date: string;
-  vote_average: number;
-};
-
-export default async function TopRated() {
+export default async function AiringToday() {
   const data = await axios.get(
-    'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
+    'https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1',
     options
   );
 
-  const response = data?.data?.results;
+  type Tv = {
+    id: string;
+    title: string;
+    release_date: string;
+    poster_path: any;
+    name: string;
+    media_type: string;
+    first_air_date: string;
+    vote_average: number;
+  };
+
+  const response = data.data?.results;
 
   return (
     <div className="text-white my-10">
-      <h1 className="text-2xl text-white mb-2 underline">Top Rated</h1>
+      <h1 className="text-2xl text-white mb-2 underline">Airing Today</h1>
       <Carousel
         opts={{
           align: 'start',
@@ -66,7 +66,7 @@ export default async function TopRated() {
                     {m.vote_average.toFixed(1)}{' '}
                   </span>
                 </div>
-                <Link href={`/${'movies'}/${m.id}`}>
+                <Link href={`/${'tv'}/${m.id}`}>
                   <h3 className="font-semibold text-lg md:text-l text-white truncate">
                     {m.title || m.name}
                   </h3>

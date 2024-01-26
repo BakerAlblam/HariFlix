@@ -35,7 +35,7 @@ export default function Navbar() {
         </Link>
         <Link
           className="text-sm font-medium hover:text-red-500"
-          href="#"
+          href="/tv"
         >
           Shows
         </Link>
@@ -82,7 +82,7 @@ export default function Navbar() {
             </Link>
             <Link
               className="flex w-full items-center py-2 text-lg font-semibold hover:text-red-500"
-              href="#"
+              href="/anime"
             >
               Anime
             </Link>

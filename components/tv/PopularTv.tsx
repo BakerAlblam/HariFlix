@@ -1,23 +1,21 @@
 import { options } from '@/app/layout';
 import axios from 'axios';
-import { Tv, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from './ui/carousel';
+} from '../ui/carousel';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default async function PopularMovie() {
+export default async function PopularTv() {
   const data = await axios.get(
-    'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1',
+    'https://api.themoviedb.org/3/tv/popular?language=en-US&page=1',
     options
   );
-
-  const response = data?.data?.results;
 
   type Tv = {
     id: string;
@@ -30,9 +28,11 @@ export default async function PopularMovie() {
     vote_average: number;
   };
 
+  const response = data.data?.results;
+
   return (
     <div className="text-white my-10">
-      <h1 className="text-2xl text-white mb-2 underline">Popular</h1>
+      <h1 className="text-2xl text-white mb-2 underline">Popular Shows</h1>
       <Carousel
         opts={{
           align: 'start',
@@ -66,13 +66,16 @@ export default async function PopularMovie() {
                     {m.vote_average.toFixed(1)}{' '}
                   </span>
                 </div>
-                <Link href={`/${'movies'}/${m.id}`}>
+                <Link href={`/${'tv'}/${m.id}`}>
                   <h3 className="font-semibold text-lg md:text-l text-white truncate">
-                    {m.title}
+                    {m.title || m.name}
                   </h3>
                 </Link>
                 <p className="text-sm flex">
-                  <span>{m.release_date?.slice(0, 4)}</span>
+                  <span>
+                    {m.release_date?.slice(0, 4) ||
+                      m.first_air_date?.slice(0, 4)}
+                  </span>
                 </p>
               </div>
             </CarouselItem>

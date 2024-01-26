@@ -1,6 +1,6 @@
 import { options } from '@/app/layout';
 import NotFound from '@/components/NotFound';
-import TvHero from '@/components/TvHero';
+import TvHero from '@/components/tv/TvHero';
 import axios from 'axios';
 import { Star } from 'lucide-react';
 import Image from 'next/image';

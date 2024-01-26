@@ -1,39 +1,41 @@
 import { options } from '@/app/layout';
 import axios from 'axios';
-import { Tv, Star } from 'lucide-react';
+import Link from 'next/link';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
-} from './ui/carousel';
+  CarouselPrevious,
+} from '../ui/carousel';
+import { Star } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
-import type { Metadata } from 'next';
 
-type Tv = {
-  id: string;
-  title: string;
-  release_date: string;
-  poster_path: any;
-  name: string;
-  media_type: string;
-  first_air_date: string;
-  vote_average: number;
-};
-
-export default async function Upcoming() {
+export default async function NowPlaying() {
   const data = await axios.get(
-    'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1',
+    'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1',
     options
   );
 
-  const response = data?.data?.results;
+  type Tv = {
+    id: string;
+    title: string;
+    release_date: string;
+    poster_path: any;
+    name: string;
+    media_type: string;
+    first_air_date: string;
+    vote_average: number;
+  };
+
+  const response = data.data?.results;
+  console.log(response);
 
   return (
     <div className="text-white my-10">
-      <h1 className="text-2xl text-white mb-2 underline">Top Rated</h1>
+      <h1 className="text-2xl text-white mb-2 underline">
+        Playing in Theatres
+      </h1>
       <Carousel
         opts={{
           align: 'start',
