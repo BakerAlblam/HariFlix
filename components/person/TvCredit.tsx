@@ -40,10 +40,10 @@ export default async function TvCredit({ data }: { data: any }) {
               src={`https://image.tmdb.org/t/p/original${d.poster_path}`}
               width={400}
             />
-            <Link href={`/${'movies'}/${d.id}`}>
+            <Link href={`/${'tv'}/${d.id}`}>
               <h3 className="font-semibold truncate text-center mt-1">
                 {' '}
-                {d?.title}{' '}
+                {d?.name}{' '}
               </h3>
             </Link>
           </div>
