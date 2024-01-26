@@ -100,6 +100,7 @@ export default function TvHero({ data }: TvHeroProps) {
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
           <Image
             alt={data?.name || ''}
+            priority
             className="mx-auto aspect-video overflow-hidden rounded-xl object-cover   lg:order-last lg:aspect-square w-full h-full"
             height={'1250'}
             src={`https://image.tmdb.org/t/p/original${data.poster_path}`}

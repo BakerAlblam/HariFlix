@@ -1,8 +1,13 @@
 export default function Loading() {
   return (
     <div
-      role="status"
-      className="items-center"
+      className="items-center justify-center w-screen h-screen bg-gray-900"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+      }}
     >
       <svg
         aria-hidden="true"
