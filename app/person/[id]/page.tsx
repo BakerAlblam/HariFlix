@@ -1,6 +1,13 @@
 import { options } from '@/app/layout';
 import NotFound from '@/components/NotFound';
 import Filmography from '@/components/person/Filmograpy';
+import TvCredit from '@/components/person/TvCredit';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
 import Image from 'next/image';
@@ -22,7 +29,6 @@ export default async function Page({ params }: { params: { id: any } }) {
     }
 
     const data = response.data;
-    console.log(response?.data);
 
     return (
       <div className="w-full min-h-screen bg-gray-900 text-white">
@@ -68,7 +74,23 @@ export default async function Page({ params }: { params: { id: any } }) {
               </div>
             </div>
           </section>
-          <Filmography data={data} />
+          <Accordion
+            type="single"
+            collapsible
+          >
+            <AccordionItem value="Movie Credits">
+              <AccordionTrigger>Movie Credits</AccordionTrigger>
+              <AccordionContent>
+                <Filmography data={data} />
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="Tv Credits">
+              <AccordionTrigger>Tv Credits</AccordionTrigger>
+              <AccordionContent>
+                <TvCredit data={data} />
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </main>
       </div>
     );

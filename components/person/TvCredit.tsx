@@ -3,10 +3,10 @@ import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default async function Filmography({ data }: { data: any }) {
+export default async function TvCredit({ data }: { data: any }) {
   const actorId = data?.id;
   const actorData = await axios.get(
-    `https://api.themoviedb.org/3/person/${actorId}/movie_credits?language=en-US`,
+    `https://api.themoviedb.org/3/person/${actorId}/tv_credits?language=en-US`,
     options
   );
 
@@ -23,6 +23,7 @@ export default async function Filmography({ data }: { data: any }) {
 
   const response = actorData?.data?.cast;
   const limitedResponse = response ? response.slice(0, 20) : null;
+  console.log(limitedResponse);
 
   return (
     <section>
