@@ -1,5 +1,6 @@
 import { options } from '@/app/layout';
 import NotFound from '@/components/NotFound';
+import MovieCast from '@/components/movies/MovieCast';
 import axios from 'axios';
 import Image from 'next/image';
 
@@ -67,6 +68,12 @@ export default async function Page({ params }: { params: { id: any } }) {
           </div>
         </section>
         <hr className="w-full h-0.5 bg-white" />
+        <section className="w-full py-12">
+          <div className="container px-4 md:px-6">
+            <h2 className="text-3xl font-bold text-center mb-4">Cast</h2>
+            <MovieCast data={data} />
+          </div>
+        </section>
         <section className="w-full py-12">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
