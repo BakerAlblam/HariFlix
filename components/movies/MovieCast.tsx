@@ -2,6 +2,7 @@ import { options } from '@/app/layout';
 import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Avatar, AvatarGroup, AvatarIcon } from '@nextui-org/react';
 
 export default async function MovieCast({ data }: { data: any }) {
   const castData = await axios.get(
@@ -11,24 +12,28 @@ export default async function MovieCast({ data }: { data: any }) {
 
   const limitedData = castData.data?.cast.slice(0, 18);
 
-  console.log(castData?.data?.cast);
   return (
-    <div className="grid lg:grid-cols-6">
+    <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-6 gap-1 lg:gap-3">
       {limitedData?.map((d: any) => (
         <div
-          className="mb-2"
+          className="mb-2 flex flex-col items-center"
           key={d?.id}
         >
-          <Image
-            alt={d?.name}
-            className="object-cover w-2/4 h-2/3 rounded-lg"
-            height={300}
-            src={`https://image.tmdb.org/t/p/original${d.profile_path}`}
-            width={400}
-          />
+          <div className="mb-2">
+            <Avatar
+              size="lg"
+              src={`https://image.tmdb.org/t/p/original${d.profile_path}`}
+            />
+          </div>
           <Link href={`/${'person'}/${d.id}`}>
-            <h3 className="font-semibold truncate mt-1"> {d?.name} </h3>
-            <p className="truncate mt-1 text-slate-400"> {d?.character} </p>
+            <h3 className="font-semibold truncate mt-1 text-center">
+              {' '}
+              {d?.name}{' '}
+            </h3>
+            <p className="truncate mt-1 text-slate-400 text-center">
+              {' '}
+              {d?.character}{' '}
+            </p>
           </Link>
         </div>
       ))}
