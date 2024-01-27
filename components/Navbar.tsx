@@ -29,9 +29,9 @@ export default function Navbar() {
         </Link>
         <Link
           className="text-sm font-medium hover:text-red-500"
-          href="#"
+          href="/people"
         >
-          Anime
+          People
         </Link>
         <Link
           className="text-sm font-medium hover:text-red-500"

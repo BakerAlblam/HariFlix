@@ -33,7 +33,7 @@ export default function TvHero({ data }: TvHeroProps) {
             <li className="inline-flex items-center">
               <Link
                 href="/"
-                className="inline-flex items-center  font-medium text-gray-700 hover:text-slate-400 dark:text-gray-400 dark:hover:text-white"
+                className="inline-flex items-center  font-medium text-gray-400 hover:text-slate-500 dark:text-gray-400 dark:hover:text-white"
               >
                 <svg
                   className="w-3 h-3 me-2.5"
@@ -50,7 +50,7 @@ export default function TvHero({ data }: TvHeroProps) {
             <li>
               <div className="flex items-center">
                 <svg
-                  className="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 "
+                  className="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-500 "
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -66,7 +66,7 @@ export default function TvHero({ data }: TvHeroProps) {
                 </svg>
                 <Link
                   href="/tv"
-                  className="ms-1 font-medium text-gray-700 hover:text-gray-400 md:ms-2 dark:text-gray-400 dark:hover:text-white"
+                  className="ms-1 font-medium text-gray-400 hover:text-gray-500 md:ms-2 dark:text-gray-400 dark:hover:text-white"
                 >
                   Shows
                 </Link>
@@ -75,7 +75,7 @@ export default function TvHero({ data }: TvHeroProps) {
             <li aria-current="page">
               <div className="flex items-center">
                 <svg
-                  className="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400"
+                  className="rtl:rotate-180  w-3 h-3 mx-1 text-gray-500"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -89,7 +89,7 @@ export default function TvHero({ data }: TvHeroProps) {
                     d="m1 9 4-4-4-4"
                   />
                 </svg>
-                <span className="ms-1 font-medium text-gray-500 md:ms-2 dark:text-gray-400">
+                <span className="ms-1 font-medium text-gray-200 md:ms-2 dark:text-gray-400">
                   {data?.name || ''}
                 </span>
               </div>
@@ -124,16 +124,16 @@ export default function TvHero({ data }: TvHeroProps) {
                 </h1>
               </div>
 
-              <div className="flex text-sm mt-5">
+              <div className="flex text-sm space-x-2">
                 {data?.genres?.map((g: Genre) => (
                   <li
                     key={g.id}
-                    className="mr-1 list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg"
+                    className=" list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg"
                   >
                     {g.name}
                   </li>
                 ))}
-                <p className="mr-1 list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg">
+                <p className=" list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg">
                   TV Series{' '}
                 </p>
               </div>

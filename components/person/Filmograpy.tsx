@@ -1,6 +1,6 @@
 import { options } from '@/app/layout';
 import axios from 'axios';
-import Image from 'next/image';
+import { Image } from '@nextui-org/react';
 import Link from 'next/link';
 
 export default async function Filmography({ data }: { data: any }) {
@@ -23,6 +23,7 @@ export default async function Filmography({ data }: { data: any }) {
 
   const response = actorData?.data?.cast;
   const limitedResponse = response ? response.slice(0, 20) : null;
+  console.log(limitedResponse);
 
   return (
     <section>
@@ -37,6 +38,9 @@ export default async function Filmography({ data }: { data: any }) {
               className="object-cover w-3/4 lg:w-full h-fit-screen rounded-lg"
               height={300}
               src={`https://image.tmdb.org/t/p/original${d.poster_path}`}
+              fallbackSrc={
+                'https://usercontent.one/wp/www.vocaleurope.eu/wp-content/uploads/no-image.jpg?media=1642546813'
+              }
               width={400}
             />
             <Link href={`/${'movies'}/${d.id}`}>

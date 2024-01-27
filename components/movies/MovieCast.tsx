@@ -2,7 +2,7 @@ import { options } from '@/app/layout';
 import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Avatar, AvatarGroup, AvatarIcon } from '@nextui-org/react';
+import { Avatar } from '@nextui-org/react';
 
 export default async function MovieCast({ data }: { data: any }) {
   const castData = await axios.get(
