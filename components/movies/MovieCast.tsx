@@ -10,10 +10,10 @@ export default async function MovieCast({ data }: { data: any }) {
     options
   );
 
-  const limitedData = castData.data?.cast.slice(0, 18);
+  const limitedData = castData.data?.cast.slice(0, 12);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-6 gap-1 lg:gap-3">
+    <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-6 gap-1 lg:gap-2">
       {limitedData?.map((d: any) => (
         <div
           className="mb-2 flex flex-col items-center"
@@ -30,11 +30,11 @@ export default async function MovieCast({ data }: { data: any }) {
               {' '}
               {d?.name}{' '}
             </h3>
-            <p className="truncate mt-1 text-slate-400 text-center">
-              {' '}
-              {d?.character}{' '}
-            </p>
           </Link>
+          <p className="truncate mt-1 text-slate-400 text-center">
+            {' '}
+            {d?.character}{' '}
+          </p>
         </div>
       ))}
     </div>
