@@ -58,8 +58,7 @@ export default async function Page({ params }: { params: { id: number } }) {
         </section>
         <hr className="w-full h-0.5 bg-white" />
         <section className="w-full py-12">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold text-center mb-4">Photos</h2>
+          <div className="container px-4 md:px-6 text-center">
             <MovieImages data={data} />
           </div>
         </section>
