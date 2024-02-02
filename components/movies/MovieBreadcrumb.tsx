@@ -67,7 +67,7 @@ const MovieBreadcrumb = ({ data }: { data: any }) => {
                 d="m1 9 4-4-4-4"
               />
             </svg>
-            <span className="ms-1 font-medium text-gray-200 md:ms-2 dark:text-gray-400">
+            <span className="ms-1 truncate font-medium text-gray-200 md:ms-2 dark:text-gray-400">
               {data?.title || ''}
             </span>
           </div>
