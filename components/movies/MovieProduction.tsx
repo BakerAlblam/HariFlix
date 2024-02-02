@@ -15,7 +15,10 @@ export default async function MovieProduction({ data }: { data: any }) {
         <div className="space-y-4">
           <h2 className="text-2xl font-bold">Production Companies</h2>
           {prod?.production_companies.map((p: any) => (
-            <p className="">
+            <p
+              className=""
+              key={p?.name}
+            >
               {p?.name} • {p?.origin_country}
             </p>
           ))}
