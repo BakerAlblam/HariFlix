@@ -1,12 +1,14 @@
 import axios from 'axios';
 import Image from 'next/image';
 import { options } from '@/app/layout';
+import { Card } from '@/components/ui/card';
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 export default async function MovieImages({ data }: { data: any }) {
   const response = await axios.get(
@@ -14,32 +16,32 @@ export default async function MovieImages({ data }: { data: any }) {
     options
   );
 
-  const images = await response?.data?.backdrops.slice(0, 9);
+  const images = await response?.data?.backdrops.slice(0, 10);
   return (
-    <Accordion
-      type="single"
-      collapsible
+    <Carousel
+      opts={{
+        align: 'start',
+      }}
+      className="w-full"
     >
-      <AccordionItem value="item-1">
-        <AccordionTrigger className="text-3xl font-bold text-center mb-4">
-          Photos
-        </AccordionTrigger>
-        <AccordionContent>
-          <div className="p-2 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-2">
-            {images?.map((m: any) => (
-              <div key={m?.file_path}>
-                <Image
-                  alt={m.name}
-                  className="object-cover w-full h-fit-screen rounded-lg"
-                  height={400}
-                  src={`https://image.tmdb.org/t/p/original${m.file_path}`}
-                  width={400}
-                />
-              </div>
-            ))}
-          </div>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+      <CarouselContent>
+        {images?.map((m: any) => (
+          <CarouselItem
+            key={m?.file_path}
+            className="sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/5 basis-1/1"
+          >
+            <Image
+              alt={m.name}
+              className="object-cover w-full h-fit-screen rounded-lg"
+              height={400}
+              src={`https://image.tmdb.org/t/p/original${m.file_path}`}
+              width={400}
+            />
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious className="hidden sm:inline-block" />
+      <CarouselNext className="hidden sm:inline-block" />
+    </Carousel>
   );
 }

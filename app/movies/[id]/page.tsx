@@ -2,10 +2,10 @@ import { options } from '@/app/layout';
 import NotFound from '@/components/NotFound';
 import MovieCast from '@/components/movies/MovieCast';
 import axios from 'axios';
-import Image from 'next/image';
 import MovieBreadcrumb from '@/components/movies/MovieBreadcrumb';
 import MovieOverview from '@/components/movies/MovieOverview';
 import MovieImages from '@/components/movies/MovieImages';
+import SimilarMovies from '@/components/movies/SimiliarMovies';
 
 export default async function Page({ params }: { params: { id: number } }) {
   try {
@@ -28,7 +28,7 @@ export default async function Page({ params }: { params: { id: number } }) {
     const lastTrailer = trailer?.data?.results[trailer.data.results.length - 1];
 
     return (
-      <div className="flex flex-col bg-[#0F1117] text-white">
+      <div className="bg-[#0F1117] text-white sm:p-14 py-16 px-3 flex flex-col gap-2 ">
         <section className="w-full py-12">
           <div className="container px-4 md:px-6">
             <MovieBreadcrumb data={data} />
@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: { id: number } }) {
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <iframe
                 width="660"
-                height="400"
+                height="360"
                 className="w-full rounded-md"
                 src={`https://www.youtube.com/embed/${lastTrailer?.key}?si=PUMN8a0SmlPFGnDN`}
                 title={`${data?.movie?.title}`}
@@ -49,17 +49,25 @@ export default async function Page({ params }: { params: { id: number } }) {
             </div>
           </div>
         </section>
-        <hr className="w-full h-0.5 bg-white" />
-        <section className="w-full py-12">
+        <hr className="w-full h-0.5 bg-gray-900" />
+        <section className="w-full py-8">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold text-center mb-4">Cast</h2>
             <MovieCast data={data} />
           </div>
         </section>
-        <hr className="w-full h-0.5 bg-white" />
-        <section className="w-full py-12">
+        <hr className="w-full h-0.5 bg-gray-900" />
+        <section className="w-full pt-8 pb-6 mb-6">
           <div className="container px-4 md:px-6 text-center">
+            <h2 className="text-3xl font-bold text-center mb-4">Photos</h2>
             <MovieImages data={data} />
+          </div>
+        </section>
+        <hr className="w-full h-0.5 bg-gray-900" />
+        <section className="w-full pt-8">
+          <div className="container px-4 md:px-6 text-center">
+            <h2 className="text-3xl font-bold text-center mb-4">Similar</h2>
+            <SimilarMovies data={data} />
           </div>
         </section>
         {/* <section className="w-full py-12">
