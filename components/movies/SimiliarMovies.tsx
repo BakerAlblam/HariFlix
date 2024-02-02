@@ -11,8 +11,6 @@ import Image from 'next/image';
 import { options } from '@/app/layout';
 import { Star } from 'lucide-react';
 import Link from 'next/link';
-import { CardContent } from '../ui/card';
-import { Badge } from '../ui/badge';
 
 export default async function SimilarMovies({ data }: { data: any }) {
   const response = await axios.get(

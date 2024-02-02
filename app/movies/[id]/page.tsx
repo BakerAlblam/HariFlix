@@ -6,6 +6,8 @@ import MovieBreadcrumb from '@/components/movies/MovieBreadcrumb';
 import MovieOverview from '@/components/movies/MovieOverview';
 import MovieImages from '@/components/movies/MovieImages';
 import SimilarMovies from '@/components/movies/SimiliarMovies';
+import MovieProduction from '@/components/movies/MovieProduction';
+import MovieReviews from '@/components/movies/MovieReviews';
 
 export default async function Page({ params }: { params: { id: number } }) {
   try {
@@ -28,7 +30,7 @@ export default async function Page({ params }: { params: { id: number } }) {
     const lastTrailer = trailer?.data?.results[trailer.data.results.length - 1];
 
     return (
-      <div className="bg-[#0F1117] text-white sm:p-14 py-16 px-3 flex flex-col gap-2 ">
+      <div className="bg-[#0F1117] text-white sm:p-14 py-16 px-2 flex flex-col gap-2 ">
         <section className="w-full py-12">
           <div className="container px-4 md:px-6">
             <MovieBreadcrumb data={data} />
@@ -70,36 +72,12 @@ export default async function Page({ params }: { params: { id: number } }) {
             <SimilarMovies data={data} />
           </div>
         </section>
-        {/* <section className="w-full py-12">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold">Overview</h2>
-                <p className="">This is the plot of the movie.</p>
-                <p className="">Release Date: January 1, 2024</p>
-                <p className="">Runtime: 120 minutes</p>
-              </div>
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold">Cast</h2>
-                <p className="">Main Actor as Main Character</p>
-                <p className="">Supporting Actor as Supporting Character</p>
-              </div>
-            </div>
-          </div>
+        <section className="w-full py-12">
+          <MovieProduction data={data} />
         </section>
         <section className="w-full py-12">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold">Ratings & Reviews</h2>
-                <p className="">User 1: 5 stars - This movie was amazing!</p>
-                <p className="">
-                  User 2: 4 stars - Great movie, would recommend..
-                </p>
-              </div>
-            </div>
-          </div>
-        </section> */}
+          <MovieReviews data={data} />
+        </section>
       </div>
     );
   } catch (error) {

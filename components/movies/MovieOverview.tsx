@@ -6,13 +6,26 @@ type genre = {
   name: string;
 };
 
-const MovieOverview = ({ data }: { data: any }) => {
+type Data = {
+  tagline: string;
+  vote_average: number;
+  title: string;
+  genres: any;
+  overview: string;
+  release_date: number;
+  runtime: number;
+};
+
+const MovieOverview = ({ data }: { data: Data }) => {
   return (
     <div className="flex flex-col justify-center space-y-2">
       <div className="flex">
         <ul>
           <li className="flex">
-            <Star size={'25'} />
+            <Star
+              size={'25'}
+              color="gold"
+            />
             <span className="ml-1 mb-2 text-lg">
               {data?.vote_average.toString().substring(0, 3)}
             </span>
@@ -32,9 +45,6 @@ const MovieOverview = ({ data }: { data: any }) => {
               {g.name}
             </li>
           ))}
-          <p className=" list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg">
-            TV Series{' '}
-          </p>
         </div>
         <span>&quot;{data?.tagline}&quot;</span>
       </div>
