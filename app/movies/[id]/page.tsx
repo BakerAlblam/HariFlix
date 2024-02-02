@@ -8,6 +8,8 @@ import MovieImages from '@/components/movies/MovieImages';
 import SimilarMovies from '@/components/movies/SimiliarMovies';
 import MovieProduction from '@/components/movies/MovieProduction';
 import MovieReviews from '@/components/movies/MovieReviews';
+import { Suspense } from 'react';
+import Loading from '@/components/Loading';
 
 export default async function Page({ params }: { params: { id: number } }) {
   try {
@@ -30,55 +32,57 @@ export default async function Page({ params }: { params: { id: number } }) {
     const lastTrailer = trailer?.data?.results[trailer.data.results.length - 1];
 
     return (
-      <div className="bg-[#0F1117] text-white sm:p-14 py-16 px-2 flex flex-col gap-2 ">
-        <section className="w-full py-12">
-          <div className="container px-4 md:px-6">
-            <MovieBreadcrumb data={data} />
+      <Suspense fallback={<Loading />}>
+        <div className="bg-[#0F1117] text-white sm:p-14 py-16 px-2 flex flex-col gap-2 ">
+          <section className="w-full py-12">
+            <div className="container px-4 md:px-6">
+              <MovieBreadcrumb data={data} />
 
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-              <iframe
-                width="660"
-                height="360"
-                className="w-full rounded-md"
-                src={`https://www.youtube.com/embed/${lastTrailer?.key}?si=PUMN8a0SmlPFGnDN`}
-                title={`${data?.movie?.title}`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
+              <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+                <iframe
+                  width="660"
+                  height="360"
+                  className="w-full rounded-md"
+                  src={`https://www.youtube.com/embed/${lastTrailer?.key}?si=PUMN8a0SmlPFGnDN`}
+                  title={`${data?.movie?.title}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
 
-              <MovieOverview data={data} />
+                <MovieOverview data={data} />
+              </div>
             </div>
-          </div>
-        </section>
-        <hr className="w-full h-0.5 bg-gray-900" />
-        <section className="w-full py-8">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold text-center mb-4">Cast</h2>
-            <MovieCast data={data} />
-          </div>
-        </section>
-        <hr className="w-full h-0.5 bg-gray-900" />
-        <section className="w-full pt-8 pb-6 mb-6">
-          <div className="container px-4 md:px-6 text-center">
-            <h2 className="text-3xl font-bold text-center mb-4">Photos</h2>
-            <MovieImages data={data} />
-          </div>
-        </section>
-        <hr className="w-full h-0.5 bg-gray-900" />
-        <section className="w-full pt-8">
-          <div className="container px-4 md:px-6 text-center">
-            <h2 className="text-3xl font-bold text-center mb-4">Similar</h2>
-            <SimilarMovies data={data} />
-          </div>
-        </section>
-        <section className="w-full py-12">
-          <MovieProduction data={data} />
-        </section>
-        <section className="w-full py-12">
-          <MovieReviews data={data} />
-        </section>
-      </div>
+          </section>
+          <hr className="w-full h-0.5 bg-gray-900" />
+          <section className="w-full py-8">
+            <div className="container px-4 md:px-6">
+              <h2 className="text-3xl font-bold text-center mb-4">Cast</h2>
+              <MovieCast data={data} />
+            </div>
+          </section>
+          <hr className="w-full h-0.5 bg-gray-900" />
+          <section className="w-full pt-8 pb-6 mb-6">
+            <div className="container px-4 md:px-6 text-center">
+              <h2 className="text-3xl font-bold text-center mb-4">Photos</h2>
+              <MovieImages data={data} />
+            </div>
+          </section>
+          <hr className="w-full h-0.5 bg-gray-900" />
+          <section className="w-full pt-8">
+            <div className="container px-4 md:px-6 text-center">
+              <h2 className="text-3xl font-bold text-center mb-4">Similar</h2>
+              <SimilarMovies data={data} />
+            </div>
+          </section>
+          <section className="w-full py-12">
+            <MovieProduction data={data} />
+          </section>
+          <section className="w-full py-12">
+            <MovieReviews data={data} />
+          </section>
+        </div>
+      </Suspense>
     );
   } catch (error) {
     // Handle other errors (e.g., network issues)
