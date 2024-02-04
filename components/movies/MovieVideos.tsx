@@ -22,7 +22,6 @@ export default async function MovieVideos({ data }: { data: Data }) {
   );
 
   const videos = await res?.data?.results;
-  console.log(videos);
 
   return (
     <Carousel

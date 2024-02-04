@@ -34,15 +34,15 @@ export default async function Page({ params }: { params: { id: number } }) {
 
     return (
       <Suspense fallback={<Loading />}>
-        <div className="bg-[#0F1117] text-white sm:p-14 py-16 px-2 flex flex-col gap-2 ">
-          <section className="w-full py-12">
+        <div className="bg-[#0F1117] text-white sm:p-10 py-12 px-2 flex flex-col gap-2 ">
+          <section className="w-full py-6">
             <div className="container px-4 md:px-6">
               <MovieBreadcrumb data={data} />
 
               <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
                 <iframe
                   width="660"
-                  height="360"
+                  height="400"
                   className="w-full rounded-md"
                   src={`https://www.youtube.com/embed/${lastTrailer?.key}?si=PUMN8a0SmlPFGnDN`}
                   title={`${data?.movie?.title}`}
