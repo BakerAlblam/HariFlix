@@ -22,10 +22,7 @@ export default async function MovieVideos({ data }: { data: Data }) {
   );
 
   const videos = await res?.data?.results;
-  const trailer = videos.filter(
-    (video: { type: string }) =>
-      video.type === 'Trailer' || video?.type === 'Teaser'
-  );
+  console.log(videos);
 
   return (
     <Carousel
@@ -35,7 +32,7 @@ export default async function MovieVideos({ data }: { data: Data }) {
       className="w-full"
     >
       <CarouselContent>
-        {trailer?.map((m: Data) => (
+        {videos?.map((m: Data) => (
           <CarouselItem
             key={m?.id}
             className="sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/5 basis-1/1"
