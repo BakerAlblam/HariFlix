@@ -1,7 +1,6 @@
 import axios from 'axios';
 import Image from 'next/image';
 import { options } from '@/app/layout';
-import { Card } from '@/components/ui/card';
 import {
   Carousel,
   CarouselContent,
@@ -10,7 +9,13 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 
-export default async function MovieImages({ data }: { data: any }) {
+type Data = {
+  file_path: string;
+  name: string;
+  id: number;
+};
+
+export default async function MovieImages({ data }: { data: Data }) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${data?.id}/images`,
     options
@@ -25,7 +30,7 @@ export default async function MovieImages({ data }: { data: any }) {
       className="w-full"
     >
       <CarouselContent>
-        {images?.map((m: any) => (
+        {images?.map((m: Data) => (
           <CarouselItem
             key={m?.file_path}
             className="sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/5 basis-1/1"

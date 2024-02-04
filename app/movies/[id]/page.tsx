@@ -10,6 +10,7 @@ import MovieProduction from '@/components/movies/MovieProduction';
 import MovieReviews from '@/components/movies/MovieReviews';
 import { Suspense } from 'react';
 import Loading from '@/components/Loading';
+import MovieVideos from '@/components/movies/MovieVideos';
 
 export default async function Page({ params }: { params: { id: number } }) {
   try {
@@ -66,6 +67,13 @@ export default async function Page({ params }: { params: { id: number } }) {
             <div className="container px-4 md:px-6 text-center">
               <h2 className="text-3xl font-bold text-center mb-4">Photos</h2>
               <MovieImages data={data} />
+            </div>
+          </section>
+          <hr className="w-full h-0.5 bg-gray-900" />
+          <section className="w-full pt-8 pb-6 mb-6">
+            <div className="container px-4 md:px-6 text-center">
+              <h2 className="text-3xl font-bold text-center mb-4">Videos</h2>
+              <MovieVideos data={data} />
             </div>
           </section>
           <hr className="w-full h-0.5 bg-gray-900" />

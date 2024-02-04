@@ -33,14 +33,14 @@ const MovieOverview = ({ data }: { data: Data }) => {
         </ul>
       </div>
       <div className="space-y-1">
-        <h1 className="text-3xl mb-6 font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+        <h1 className="text-3xl mb-4 font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
           {data?.title}
         </h1>
         <div className="flex text-sm space-x-2">
           {data?.genres?.map((g: genre) => (
             <li
               key={g.id}
-              className=" list-none mb-2 text-sm p-1.5 bg-slate-800 rounded-lg"
+              className=" list-none mb-4 text-sm p-1.5 bg-slate-800 rounded-lg"
             >
               {g.name}
             </li>
