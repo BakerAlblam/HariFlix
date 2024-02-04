@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-export default async function MovieBreadcrumb({ data }: { data: any }) {
+export default async function TvBreadcrumb({ data }: { data: any }) {
   return (
     <nav
       className="flex px-5 py-3 text-gray-700  rounded-lg mb-4 w-1-/3"
@@ -43,10 +43,10 @@ export default async function MovieBreadcrumb({ data }: { data: any }) {
               />
             </svg>
             <Link
-              href="/movies"
+              href="/tv"
               className="ms-1 font-medium text-gray-400 hover:text-gray-500 md:ms-2 dark:text-gray-400 dark:hover:text-white"
             >
-              Movies
+              Shows
             </Link>
           </div>
         </li>
@@ -68,7 +68,7 @@ export default async function MovieBreadcrumb({ data }: { data: any }) {
               />
             </svg>
             <span className="ms-1 truncate font-medium text-gray-200 md:ms-2 dark:text-gray-400">
-              {data?.title || ''}
+              {data?.name as string}
             </span>
           </div>
         </li>

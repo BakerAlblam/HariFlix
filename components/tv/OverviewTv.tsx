@@ -1,22 +1,29 @@
 import { Star } from 'lucide-react';
-import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-type genre = {
+type Genre = {
   id: string;
   name: string;
 };
 
-type Data = {
-  tagline: string;
-  vote_average: number;
-  title: string;
-  genres: any;
-  overview: string;
-  release_date: number;
-  runtime: number;
+type TvHeroProps = {
+  data: {
+    genres?: Genre[];
+    name?: string;
+    tagline?: string;
+    vote_average?: number;
+    overview?: string;
+    first_air_date?: string;
+    last_air_date?: string | null;
+    poster_path?: string;
+    original_language: string;
+    runtime: number;
+    release_date: string;
+  };
 };
 
-const MovieOverview = ({ data }: { data: Data }) => {
+export default function OverviewTv({ data }: TvHeroProps) {
   return (
     <div className="flex flex-col justify-center space-y-2">
       <ul className="flex flex-row space-y-2">
@@ -26,22 +33,21 @@ const MovieOverview = ({ data }: { data: Data }) => {
             color="gold"
           />
           <span className="text-lg mr-1 ml-1">
-            {data?.vote_average.toString().substring(0, 3)} •
+            {data?.vote_average?.toString().substring(0, 3)} •
           </span>
-          <p className="text-lg mr-1">{data?.runtime}m •</p>
           <p className="text-lg mr-1">
-            {data?.release_date.toString().substring(0, 4)}
+            {data?.first_air_date?.toString().substring(0, 4)}
           </p>
         </li>
       </ul>
 
       <div className="space-y-1">
         <h1 className="text-3xl mb-2 font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-          {data?.title}
+          {data?.name}
         </h1>
         <span>&quot;{data?.tagline}&quot;</span>
         <div className="flex text-sm space-x-2 mt-5">
-          {data?.genres?.map((g: genre) => (
+          {data?.genres?.map((g: Genre) => (
             <li
               key={g.id}
               className=" list-none mb-2 mt-1 text-sm p-1.5 bg-slate-800 rounded-lg"
@@ -57,6 +63,4 @@ const MovieOverview = ({ data }: { data: Data }) => {
       </div>
     </div>
   );
-};
-
-export default MovieOverview;
+}

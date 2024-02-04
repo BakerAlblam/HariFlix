@@ -34,7 +34,7 @@ export default async function Page({ params }: { params: { id: number } }) {
 
     return (
       <Suspense fallback={<Loading />}>
-        <div className="bg-[#0F1117] text-white sm:p-10 py-12 px-2 flex flex-col gap-2 ">
+        <div className="bg-[#0F1117] text-white sm:p-10 py-12 px-2 flex flex-col gap-2">
           <section className="w-full py-6">
             <div className="container px-4 md:px-6">
               <MovieBreadcrumb data={data} />
@@ -56,7 +56,7 @@ export default async function Page({ params }: { params: { id: number } }) {
             </div>
           </section>
           <hr className="w-full h-0.5 bg-gray-900" />
-          <section className="w-full py-8">
+          <section className="w-full pt-8 pb-6 mb-6">
             <div className="container px-4 md:px-6">
               <h2 className="text-3xl font-bold text-center mb-4">Cast</h2>
               <MovieCast data={data} />
@@ -65,7 +65,7 @@ export default async function Page({ params }: { params: { id: number } }) {
           <hr className="w-full h-0.5 bg-gray-900" />
           <section className="w-full pt-8 pb-6 mb-6">
             <div className="container px-4 md:px-6 text-center">
-              <h2 className="text-3xl font-bold text-center mb-4">Photos</h2>
+              <h2 className="text-3xl font-bold text-center mb-4">Images</h2>
               <MovieImages data={data} />
             </div>
           </section>
@@ -77,16 +77,16 @@ export default async function Page({ params }: { params: { id: number } }) {
             </div>
           </section>
           <hr className="w-full h-0.5 bg-gray-900" />
-          <section className="w-full pt-8">
+          <section className="w-full pt-8 pb-6 mb-6">
             <div className="container px-4 md:px-6 text-center">
               <h2 className="text-3xl font-bold text-center mb-4">Similar</h2>
               <SimilarMovies data={data} />
             </div>
           </section>
-          <section className="w-full py-12">
+          <section className="w-full pt-8 pb-6 mb-6">
             <MovieProduction data={data} />
           </section>
-          <section className="w-full py-12">
+          <section className="w-full pt-8 pb-6 mb-6">
             <MovieReviews data={data} />
           </section>
         </div>
