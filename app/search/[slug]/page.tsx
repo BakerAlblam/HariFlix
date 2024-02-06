@@ -2,10 +2,9 @@ import { options } from '@/app/layout';
 import Loading from '@/components/Loading';
 import axios from 'axios';
 import { Suspense } from 'react';
-import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Star } from 'lucide-react';
+import { Image } from '@nextui-org/react';
 
 type Data = {
   vote_average: number;
@@ -15,6 +14,7 @@ type Data = {
   poster_path: string;
   first_air_date: number;
   name: string;
+  profile_path: string;
 };
 
 export default async function SearchResults(context: {
@@ -25,7 +25,9 @@ export default async function SearchResults(context: {
     `https://api.themoviedb.org/3/search/multi?query=${slug}&include_adult=false&language=en-US&page=1`,
     options
   );
-  const res = await data?.data?.results;
+  const res = (await data?.data?.results)?.filter(
+    (item: Data) => item.poster_path || item?.profile_path === null
+  );
   console.log(res);
 
   return (
@@ -34,15 +36,16 @@ export default async function SearchResults(context: {
         <h1 className="text-2xl text-white text-start font-bold mb-3">
           Search results for: "{decodeURIComponent(slug)}"
         </h1>
-
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {res?.map((m: Data) => (
-            <Card className="w-full rounded-lg overflow-hidden">
+            <Card className="w-full rounded-sm overflow-hidden">
               <div className="relative">
-                <img
+                <Image
                   alt={m?.name || m?.title}
-                  className="w-full h-auto"
-                  src={`https://image.tmdb.org/t/p/original${m.poster_path}`}
+                  className="w-full h-auto rounded-none"
+                  src={`https://image.tmdb.org/t/p/original${
+                    m.poster_path || m?.profile_path
+                  }`}
                   style={{
                     aspectRatio: '2/3',
                     objectFit: 'cover',
@@ -51,7 +54,7 @@ export default async function SearchResults(context: {
                 <div className="flex absolute top-0 right-0 bg-[#ffd700] gap-2 px-2 py-1 text-xs font-bold text-black">
                   <Star
                     size={20}
-                    color="white"
+                    color="gold"
                   />
                   {m?.vote_average &&
                     typeof m.vote_average === 'number' &&
@@ -62,15 +65,15 @@ export default async function SearchResults(context: {
                 <h3 className="text-lg font-bold truncate">
                   {m?.title || m?.name}
                 </h3>
-                <p className="text-sm text-gray-600">
-                  {m?.release_date || m?.first_air_date} •
-                </p>
-                <Badge
-                  className="mt-2"
-                  variant="secondary"
-                >
-                  {m?.media_type}
-                </Badge>
+                <div className="">
+                  <p className="text-sm text-gray-600">
+                    {m?.release_date?.toString()?.substring(0, 4) ||
+                      m?.first_air_date?.toString()?.substring(0, 4)}{' '}
+                    •{' '}
+                    {m?.media_type.charAt(0).toUpperCase() +
+                      m.media_type.slice(1)}
+                  </p>
+                </div>
               </CardContent>
             </Card>
           ))}
