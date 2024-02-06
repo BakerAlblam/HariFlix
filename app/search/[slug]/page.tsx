@@ -7,6 +7,7 @@ import { Star } from 'lucide-react';
 import { Image } from '@nextui-org/react';
 
 type Data = {
+  id: number;
   vote_average: number;
   title: string;
   release_date: number;
@@ -34,11 +35,14 @@ export default async function SearchResults(context: {
     <Suspense fallback={<Loading />}>
       <main className="sm:p-14 py-16 px-1 flex flex-col gap-2 bg-[#0F1117]">
         <h1 className="text-2xl text-white text-start font-bold mb-3">
-          Search results for: "{decodeURIComponent(slug)}"
+          Search results for: &quot;{decodeURIComponent(slug)}&quot;
         </h1>
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {res?.map((m: Data) => (
-            <Card className="w-full rounded-sm overflow-hidden">
+            <Card
+              className="w-full rounded-sm overflow-hidden"
+              key={m?.id}
+            >
               <div className="relative">
                 <Image
                   alt={m?.name || m?.title}
