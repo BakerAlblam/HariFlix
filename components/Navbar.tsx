@@ -2,7 +2,18 @@ import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { SheetTrigger, SheetContent, Sheet } from '@/components/ui/sheet';
-import { JSX, SVGProps } from 'react';
+import { JSX, SVGProps, useState } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import NavSearch from './NavSearch';
+
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: process.env.AUTHORIZATION,
+  },
+};
 
 export default function Navbar() {
   return (
@@ -42,11 +53,7 @@ export default function Navbar() {
       </nav>
       <div className="relative">
         <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
-        <Input
-          className="pl-8 text-sm"
-          placeholder="Search..."
-          type="search"
-        />
+        <NavSearch options={options} />
       </div>
       <Sheet>
         <SheetTrigger asChild>
