@@ -1,10 +1,8 @@
 import Link from 'next/link';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { SheetTrigger, SheetContent, Sheet } from '@/components/ui/sheet';
 import { JSX, SVGProps, useState } from 'react';
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
+
 import NavSearch from './NavSearch';
 
 const options = {
@@ -17,12 +15,11 @@ const options = {
 
 export default function Navbar() {
   return (
-    <header className="flex items-center justify-between px-4 py-2 lg:px-6 sticky top-0 bg-white">
+    <header className="flex items-center justify-between px-4 py-2 lg:px-6  bg-white">
       <Link
         className="flex items-center"
         href="/"
       >
-        <FilmIcon className="h-6 w-6" />
         <span className="ml-2 text-lg font-semibold">HariMDB</span>
       </Link>
       <nav className="hidden lg:flex gap-6">

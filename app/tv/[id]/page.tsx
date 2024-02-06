@@ -18,6 +18,7 @@ import TvBreadcrumb from '@/components/tv/TvBreadcrumb';
 import TvCast from '@/components/tv/TvCast';
 import TvImages from '@/components/tv/TvImages';
 import TvVideos from '@/components/tv/TvVideos';
+import TvReviews from '@/components/tv/TvReviews';
 
 export default async function Page({ params }: { params: { id: number } }) {
   try {
@@ -93,6 +94,14 @@ export default async function Page({ params }: { params: { id: number } }) {
                 Episodes and Seasons
               </h2>
               <SeasonsAndEpi data={data} />
+            </div>
+          </section>
+          {/* Seasons and episodes */}
+          <hr className="w-full h-0.5 bg-gray-900" />
+          <section className="w-full py-6">
+            <div className="container px-4 md:px-6">
+              <h2 className="text-3xl font-bold text-center mb-4">Reviews</h2>
+              <TvReviews data={data} />
             </div>
           </section>
         </div>
