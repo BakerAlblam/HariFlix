@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Star } from 'lucide-react';
 import { Image } from '@nextui-org/react';
+import Link from 'next/link';
 
 type Data = {
   id: number;
@@ -33,11 +34,11 @@ export default async function SearchResults(context: {
 
   return (
     <Suspense fallback={<Loading />}>
-      <main className="sm:p-14 py-16 px-1 flex flex-col gap-2 bg-[#0F1117]">
+      <main className="sm:p-12 py-16 px-1 flex flex-col gap-2 bg-[#0F1117]">
         <h1 className="text-2xl text-white text-start font-bold mb-3">
           Search results for: &quot;{decodeURIComponent(slug)}&quot;
         </h1>
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8 gap-5">
           {res?.map((m: Data) => (
             <Card
               className="w-full rounded-sm overflow-hidden"
@@ -55,27 +56,38 @@ export default async function SearchResults(context: {
                     objectFit: 'cover',
                   }}
                 />
-                <div className="flex absolute top-0 right-0 bg-[#ffd700] gap-2 px-2 py-1 text-xs font-bold text-black">
+              </div>
+              <CardContent className="bg-white p-4">
+                <Link
+                  href={`/${
+                    m.media_type === 'movie' ? 'movies' : m.media_type
+                  }/${m.id}`}
+                >
+                  <h3 className="text-lg font-bold truncate">
+                    {m?.title || m?.name}
+                  </h3>
+                </Link>
+                <div className="flex mt-1 space-x-2 text-sm text-gray-600">
+                  <p>
+                    {m?.release_date?.toString()?.substring(0, 4) ||
+                      m?.first_air_date?.toString()?.substring(0, 4)}
+                    •
+                  </p>
+                  <p>
+                    {' '}
+                    {m?.media_type.charAt(0).toUpperCase() +
+                      m.media_type.slice(1)}
+                    •
+                  </p>
                   <Star
                     size={20}
                     color="gold"
                   />
-                  {m?.vote_average &&
-                    typeof m.vote_average === 'number' &&
-                    m.vote_average.toFixed(1)}
-                </div>
-              </div>
-              <CardContent className="bg-white p-4">
-                <h3 className="text-lg font-bold truncate">
-                  {m?.title || m?.name}
-                </h3>
-                <div className="">
-                  <p className="text-sm text-gray-600">
-                    {m?.release_date?.toString()?.substring(0, 4) ||
-                      m?.first_air_date?.toString()?.substring(0, 4)}{' '}
-                    •{' '}
-                    {m?.media_type.charAt(0).toUpperCase() +
-                      m.media_type.slice(1)}
+                  <p>
+                    {' '}
+                    {m?.vote_average &&
+                      typeof m.vote_average === 'number' &&
+                      m.vote_average.toFixed(1)}
                   </p>
                 </div>
               </CardContent>
