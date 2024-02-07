@@ -38,7 +38,7 @@ export default async function SearchResults(context: {
         <h1 className="text-2xl text-white text-start font-bold mb-3">
           Search results for: &quot;{decodeURIComponent(slug)}&quot;
         </h1>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-5">
           {res?.map((m: Data) => (
             <Card
               className="w-full rounded-sm overflow-hidden"
