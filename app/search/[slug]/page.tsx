@@ -45,7 +45,7 @@ export default async function SearchResults(context: {
               key={m?.id}
             >
               <div className="relative">
-                <Image
+                <img
                   alt={m?.name || m?.title}
                   className="w-full h-auto rounded-none"
                   src={`https://image.tmdb.org/t/p/original${

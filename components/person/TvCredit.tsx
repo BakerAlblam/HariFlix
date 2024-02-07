@@ -33,7 +33,7 @@ export default async function TvCredit({ data }: { data: any }) {
             className="mb-2"
             key={d?.id}
           >
-            <Image
+            <img
               alt={d?.name}
               className="object-cover w-3/4 lg:w-full h-fit-screen rounded-lg"
               height={300}

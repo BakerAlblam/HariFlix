@@ -34,7 +34,7 @@ export default async function SimilarMovies({ data }: { data: any }) {
             className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 2xl:basis-1/8 basis-1/2"
           >
             <div className="p-1">
-              <Image
+              <img
                 alt={m.name}
                 className="object-cover w-full h-fit-screen rounded-lg"
                 height={400}

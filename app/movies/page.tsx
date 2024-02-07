@@ -1,7 +1,3 @@
-import axios from 'axios';
-import { options } from '../layout';
-import Image from 'next/image';
-import Link from 'next/link';
 import Loading from '@/components/Loading';
 import { Suspense } from 'react';
 import NowPlaying from '@/components/movies/NowPlaying';

@@ -38,7 +38,7 @@ export default async function Page({ params }: { params: { id: any } }) {
           <main className="container mx-auto p-4 md:p-8">
             <section className="mb-8 flex flex-col md:flex-row items-center gap-4">
               <div className="w-full md:w-1/3">
-                <Image
+                <img
                   priority
                   alt="Actor Image"
                   className="w-full h-64 md:h-auto object-cover rounded-md"

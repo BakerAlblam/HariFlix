@@ -35,7 +35,7 @@ export default async function TvImages({ data }: { data: Data }) {
             key={m?.file_path}
             className="sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/3 2xl:basis-1/5 basis-1/1"
           >
-            <Image
+            <img
               alt={m.name}
               className="object-cover w-full h-fit-screen rounded-lg"
               height={400}
