@@ -39,7 +39,6 @@ export default async function Page({ params }: { params: { id: any } }) {
             <section className="mb-8 flex flex-col md:flex-row items-center gap-4">
               <div className="w-full md:w-1/3">
                 <img
-                  priority
                   alt="Actor Image"
                   className="w-full h-64 md:h-auto object-cover rounded-md"
                   height="500"
