@@ -29,7 +29,6 @@ export default async function NowPlaying() {
   };
 
   const response = data.data?.results;
-  console.log(response);
 
   return (
     <div className="text-white my-10">

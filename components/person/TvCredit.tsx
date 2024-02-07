@@ -23,7 +23,6 @@ export default async function TvCredit({ data }: { data: any }) {
 
   const response = actorData?.data?.cast;
   const limitedResponse = response ? response.slice(0, 20) : null;
-  console.log(limitedResponse);
 
   return (
     <section>

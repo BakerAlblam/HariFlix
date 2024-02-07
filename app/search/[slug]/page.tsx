@@ -30,7 +30,6 @@ export default async function SearchResults(context: {
   const res = (await data?.data?.results)?.filter(
     (item: Data) => item.poster_path || item?.profile_path === null
   );
-  console.log(res);
 
   return (
     <Suspense fallback={<Loading />}>

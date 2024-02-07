@@ -12,7 +12,6 @@ export default async function Page() {
   );
 
   const limitedResponse = data?.data?.results;
-  console.log(limitedResponse);
 
   return (
     <Suspense fallback={<Loading />}>
