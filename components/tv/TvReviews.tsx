@@ -1,7 +1,7 @@
 import { options } from '@/app/layout';
 import axios from 'axios';
 import { Card } from '../ui/card';
-import { Avatar } from '@nextui-org/react';
+import { Avatar, Badge } from '@nextui-org/react';
 import { Star } from 'lucide-react';
 import {
   Accordion,
@@ -32,10 +32,6 @@ export default async function TvReviews({ data }: { data: any }) {
   return (
     <div className="container px-4 md:px-6">
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold">
-          Ratings & Reviews -{' '}
-          <span className="p-2 bg-slate-600 rounded-full">{rev?.length}</span>
-        </h2>
         {rev?.map((r: Data) => (
           <Accordion
             type="single"

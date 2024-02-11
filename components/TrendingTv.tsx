@@ -21,6 +21,7 @@ type Tv = {
   media_type: string;
   first_air_date: string;
   vote_average: number;
+  profile_path: string;
 };
 
 export default async function TrendingTv() {
@@ -45,46 +46,58 @@ export default async function TrendingTv() {
               key={m.id}
               className="sm:basis-1/2 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 2xl:basis-1/8 basis-1/2"
             >
-              <div className="p-1">
-                <img
-                  alt={m.name}
-                  className="object-cover w-full h-fit-screen rounded-lg"
-                  height={400}
-                  src={`https://image.tmdb.org/t/p/original${m.poster_path}`}
-                  width={400}
-                />
-              </div>
-              <div className="bg-gray-400 p-4 rounded-b-lg">
-                <div className="text-sm flex">
-                  <Star
-                    size={20}
-                    color="gold"
+              <Card
+                className="w-full rounded-sm overflow-hidden"
+                key={m?.id}
+              >
+                <div className="relative">
+                  <img
+                    alt={m?.name || m?.title}
+                    className="w-full h-auto rounded-none"
+                    src={`https://image.tmdb.org/t/p/original${
+                      m.poster_path || m?.profile_path
+                    }`}
+                    style={{
+                      aspectRatio: '2/3',
+                      objectFit: 'cover',
+                    }}
                   />
-                  <span className="ml-1 mb-0.5 text-rose-700">
-                    {' '}
-                    {m.vote_average.toFixed(1)}{' '}
-                  </span>
                 </div>
-                <Link
-                  href={`/${
-                    m.media_type === 'movie' ? 'movies' : m.media_type
-                  }/${m.id}`}
-                >
-                  <h3 className="font-semibold text-lg md:text-l text-white truncate">
-                    {m.title || m.name}
-                  </h3>
-                </Link>
-                <p className="text-sm flex">
-                  <span>
-                    {m.release_date?.slice(0, 4) ||
-                      m.first_air_date?.slice(0, 4)}
-                  </span>
-                  <span className="ml-auto">
-                    {m.media_type.charAt(0).toUpperCase() +
-                      m.media_type.slice(1)}
-                  </span>
-                </p>
-              </div>
+                <CardContent className="bg-white p-4">
+                  <Link
+                    href={`/${
+                      m.media_type === 'movie' ? 'movies' : m.media_type
+                    }/${m.id}`}
+                  >
+                    <h3 className="text-lg font-bold truncate">
+                      {m?.title || m?.name}
+                    </h3>
+                  </Link>
+                  <div className="flex mt-1 space-x-2 text-sm text-gray-600">
+                    <p>
+                      {m?.release_date?.toString()?.substring(0, 4) ||
+                        m?.first_air_date?.toString()?.substring(0, 4)}
+                      •
+                    </p>
+                    <p>
+                      {' '}
+                      {m?.media_type.charAt(0).toUpperCase() +
+                        m.media_type.slice(1)}
+                      •
+                    </p>
+                    <Star
+                      size={20}
+                      color="gold"
+                    />
+                    <p>
+                      {' '}
+                      {m?.vote_average &&
+                        typeof m.vote_average === 'number' &&
+                        m.vote_average.toFixed(1)}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
             </CarouselItem>
           ))}
         </CarouselContent>

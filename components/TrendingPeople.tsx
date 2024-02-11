@@ -44,31 +44,34 @@ export default async function TrendingPeople() {
               key={m.id}
               className="sm:basis-1/2 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 2xl:basis-1/8 basis-1/2"
             >
-              <div className="p-1">
-                <img
-                  alt={m.name}
-                  className="object-cover w-full h-fit-screen rounded-lg"
-                  height={400}
-                  src={`https://image.tmdb.org/t/p/original${m.profile_path}`}
-                  width={400}
-                />
-              </div>
-              <div className="bg-gray-400 p-4 rounded-b-lg">
-                <Link
-                  href={`/${
-                    m.media_type === 'movie' ? 'movies' : m.media_type
-                  }/${m.id}`}
-                >
-                  <h3 className="font-semibold text-lg md:text-l text-white truncate">
-                    {m.title || m.name}
-                  </h3>
-                  <div className="text-sm flex">
-                    <span className="">
-                      Known for: {m.known_for_department}{' '}
-                    </span>
-                  </div>
-                </Link>
-              </div>
+              <Card
+                className="w-full rounded-sm overflow-hidden"
+                key={m?.id}
+              >
+                <div className="relative">
+                  <img
+                    alt={m?.name || m?.title}
+                    className="w-full h-auto rounded-none"
+                    src={`https://image.tmdb.org/t/p/original${m?.profile_path}`}
+                    style={{
+                      aspectRatio: '2/3',
+                      objectFit: 'cover',
+                    }}
+                  />
+                </div>
+                <CardContent className="bg-white p-4">
+                  <Link
+                    href={`/${
+                      m.media_type === 'movie' ? 'movies' : m.media_type
+                    }/${m.id}`}
+                  >
+                    <h3 className="text-lg font-bold truncate">
+                      {m?.title || m?.name}
+                    </h3>
+                  </Link>
+                  <p>Known for: {m?.known_for_department} </p>
+                </CardContent>
+              </Card>
             </CarouselItem>
           ))}
         </CarouselContent>

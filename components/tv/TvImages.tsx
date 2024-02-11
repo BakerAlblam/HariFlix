@@ -37,7 +37,7 @@ export default async function TvImages({ data }: { data: Data }) {
           >
             <img
               alt={m.name}
-              className="object-cover w-full h-fit-screen rounded-lg"
+              className="object-cover w-full h-72 md:l-72 lg:h-80 1xl:h-72 2xl:h-96 rounded-md"
               height={400}
               src={`https://image.tmdb.org/t/p/original${m.file_path}`}
               width={400}

@@ -1,5 +1,7 @@
-import { Card } from '@nextui-org/react';
+import { options } from '@/app/layout';
 import axios from 'axios';
+import { Star } from 'lucide-react';
+import Link from 'next/link';
 import {
   Carousel,
   CarouselContent,
@@ -7,19 +9,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '../ui/carousel';
-import Image from 'next/image';
-import { options } from '@/app/layout';
-import { Star } from 'lucide-react';
-import Link from 'next/link';
+import SimilarMovies from '../movies/SimiliarMovies';
+import { Card } from '@nextui-org/react';
 import { CardContent } from '../ui/card';
 
-export default async function SimilarMovies({ data }: { data: any }) {
+export default async function TvSimilar({ data }: { data: any }) {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/${data?.id}/similar?language=en-US&page=1`,
+    `https://api.themoviedb.org/3/tv/${data?.id}/similar?language=en-US&page=1`,
     options
   );
 
-  const SimilarMovies = await response?.data?.results;
+  const SimilarTv = await response?.data?.results;
 
   return (
     <Carousel
@@ -29,7 +29,7 @@ export default async function SimilarMovies({ data }: { data: any }) {
       className="w-full"
     >
       <CarouselContent>
-        {SimilarMovies?.map((m: any) => (
+        {SimilarTv?.map((m: any) => (
           <CarouselItem
             key={m.id}
             className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 2xl:basis-1/8 basis-1/2"
@@ -52,9 +52,9 @@ export default async function SimilarMovies({ data }: { data: any }) {
                 />
               </div>
               <CardContent className="bg-white p-4">
-                <Link href={`/movies/${m.id}`}>
-                  <h3 className="text-lg text-left font-bold truncate">
-                    {m?.title}
+                <Link href={`/${m.media_type}/${m.id}`}>
+                  <h3 className="text-lg font-bold truncate text-left">
+                    {m?.name}
                   </h3>
                 </Link>
                 <div className="flex mt-1 space-x-2 text-sm text-gray-600">
@@ -63,7 +63,7 @@ export default async function SimilarMovies({ data }: { data: any }) {
                       m?.first_air_date?.toString()?.substring(0, 4)}
                     •
                   </p>
-
+                  <p> {m?.media_type}•</p>
                   <Star
                     size={20}
                     color="gold"

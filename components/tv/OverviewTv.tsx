@@ -45,7 +45,7 @@ export default function OverviewTv({ data }: TvHeroProps) {
         <h1 className="text-3xl mb-2 font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
           {data?.name}
         </h1>
-        {data?.tagline ? <span>&quot;{data?.tagline}&quot;</span> : null}
+        {data?.tagline ? <span>{data?.tagline}</span> : null}
         <div className="flex text-sm space-x-2 mt-5">
           {data?.genres?.map((g: Genre) => (
             <li

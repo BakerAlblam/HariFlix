@@ -55,39 +55,45 @@ export default async function Page({ params }: { params: { id: number } }) {
               </div>
             </div>
           </section>
-          <hr className="w-full h-0.5 bg-gray-900" />
+          <hr className="w-full h-0.5" />
           <section className="w-full pt-8 pb-6 mb-6">
             <div className="container px-4 md:px-6">
               <h2 className="text-3xl font-bold text-center mb-4">Cast</h2>
               <MovieCast data={data} />
             </div>
           </section>
-          <hr className="w-full h-0.5 bg-gray-900" />
+          <hr className="w-full h-0.5" />
           <section className="w-full pt-8 pb-6 mb-6">
             <div className="container px-4 md:px-6 text-center">
               <h2 className="text-3xl font-bold text-center mb-4">Images</h2>
               <MovieImages data={data} />
             </div>
           </section>
-          <hr className="w-full h-0.5 bg-gray-900" />
+          <hr className="w-full h-0.5" />
           <section className="w-full pt-8 pb-6 mb-6">
             <div className="container px-4 md:px-6 text-center">
               <h2 className="text-3xl font-bold text-center mb-4">Videos</h2>
               <MovieVideos data={data} />
             </div>
           </section>
-          <hr className="w-full h-0.5 bg-gray-900" />
+          <hr className="w-full h-0.5 " />
           <section className="w-full pt-8 pb-6 mb-6">
             <div className="container px-4 md:px-6 text-center">
               <h2 className="text-3xl font-bold text-center mb-4">Similar</h2>
               <SimilarMovies data={data} />
             </div>
           </section>
+          <hr className="w-full h-0.5 " />
           <section className="w-full pt-8 pb-6 mb-6">
-            <MovieProduction data={data} />
+            <div className="container px-4 md:px-6 text-center">
+              <h2 className="text-3xl font-bold text-center mb-4">
+                Rating & Reviews
+              </h2>
+              <MovieReviews data={data} />
+            </div>
           </section>
           <section className="w-full pt-8 pb-6 mb-6">
-            <MovieReviews data={data} />
+            <MovieProduction data={data} />
           </section>
         </div>
       </Suspense>

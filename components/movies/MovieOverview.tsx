@@ -39,7 +39,7 @@ const MovieOverview = ({ data }: { data: Data }) => {
         <h1 className="text-3xl mb-2 font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
           {data?.title}
         </h1>
-        <span>&quot;{data?.tagline}&quot;</span>
+        <span>{data?.tagline ? <>{data?.tagline}</> : null}</span>
         <div className="flex text-sm space-x-2 mt-5">
           {data?.genres?.map((g: genre) => (
             <li
