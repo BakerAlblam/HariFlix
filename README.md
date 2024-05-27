@@ -2,4 +2,4 @@ HariMDB is an online database of information related to films, television series
 
 https://hari-flix.vercel.app/
 
-read me
+read
